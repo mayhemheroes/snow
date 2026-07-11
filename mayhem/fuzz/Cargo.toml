@@ -1,0 +1,44 @@
+[package]
+name = "snow-fuzz"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[package.metadata]
+cargo-fuzz = true
+
+[dependencies]
+libfuzzer-sys = "0.4"
+
+[dependencies.snow]
+path = "../../"
+default-features = true
+
+# Prevent cargo-fuzz from accidentally picking up profile.fuzz settings we don't have.
+[profile.release]
+opt-level = 3
+debug = true
+
+[[bin]]
+name = "handshake_reader"
+path = "fuzz_targets/handshake_reader.rs"
+test = false
+doc = false
+
+[[bin]]
+name = "handshake_writer"
+path = "fuzz_targets/handshake_writer.rs"
+test = false
+doc = false
+
+[[bin]]
+name = "params"
+path = "fuzz_targets/params.rs"
+test = false
+doc = false
+
+[[bin]]
+name = "transport"
+path = "fuzz_targets/transport.rs"
+test = false
+doc = false

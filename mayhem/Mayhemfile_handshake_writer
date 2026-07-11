@@ -1,0 +1,9 @@
+project: mayhemheroes/snow
+target: handshake_writer
+
+cmds:
+  - cmd: /mayhem/handshake_writer
+    libfuzzer: true
+testsuite:
+  - https://$MAYHEM_DOMAIN/$MAYHEM_PROJECT/$MAYHEM_TARGET/testsuite.tar
+  - file://mayhem/handshake_writer/testsuite
